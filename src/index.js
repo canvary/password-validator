@@ -80,6 +80,9 @@ PasswordValidator.prototype.validate = function (pwd, options) {
       if (!_isPasswordValidFor.call(_this, property)) {
         // If the validation for a property fails,
         // add it to the error list
+        if (error[property.method]) {
+          return errorList.concat(error[property.method]);
+        }
         return errorList.concat(property.method);
       }
       return errorList;
